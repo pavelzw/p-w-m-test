@@ -16,7 +16,7 @@ jobs:
         run: |
           python -c "import numpy"
   test2:
-    runs-on: macos-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
 
@@ -33,7 +33,7 @@ jobs:
         run: >-
           micromamba info && micromamba list
   test3:
-    runs-on: windows-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
 
