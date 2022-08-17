@@ -15,15 +15,33 @@ jobs:
         shell: bash -l {0}
         run: |
           python -c "import numpy"
+  test2:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
 
-      # # Windows
-      # # With Powershell:
-      # - name: Run Python
-      #   shell: powershell
-      #   run: |
-      #     python -c "import numpy"
-      # # Or with cmd:
-      # - name: Run cmd.exe
-      #   shell: cmd /C CALL {0}
-      #   run: >-
-      #     micromamba info && micromamba list
+      - name: Install Conda environment from environment.yml
+        uses: pavelzw/provision-with-micromamba@deinit
+
+      # Linux and macOS
+      - name: Run Python
+        shell: powershell -l {0}
+        run: |
+          python -c "import numpy"
+      - name: Run cmd.exe
+        shell: cmd /C CALL {0}
+        run: >-
+          micromamba info && micromamba list
+  test3:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Conda environment from environment.yml
+        uses: pavelzw/provision-with-micromamba@deinit
+
+      # Linux and macOS
+      - name: Run Python
+        shell: zsh -l {0}
+        run: |
+          python -c "import numpy"
