@@ -25,7 +25,7 @@ jobs:
 
       # Linux and macOS
       - name: Run Python
-        shell: powershell -l {0}
+        shell: powershell
         run: |
           python -c "import numpy"
       - name: Run cmd.exe
@@ -40,8 +40,11 @@ jobs:
       - name: Install Conda environment from environment.yml
         uses: pavelzw/provision-with-micromamba@deinit
 
-      # Linux and macOS
       - name: Run Python
-        shell: zsh -l {0}
+        shell: zsh -i {0}
+        run: |
+          python -c "import numpy"
+      - name: Run Python
+        shell: bash -l {0}
         run: |
           python -c "import numpy"
