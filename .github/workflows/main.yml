@@ -55,7 +55,7 @@ jobs:
 
       - name: Install Conda environment from environment.yml
         uses: pavelzw/provision-with-micromamba@deinit
-        with: 
+        with:
           post-deinit: false
 
       # Linux and macOS
@@ -70,7 +70,7 @@ jobs:
 
       - name: Install Conda environment from environment.yml
         uses: pavelzw/provision-with-micromamba@deinit
-        with: 
+        with:
           post-deinit: false
 
       # Linux and macOS
@@ -89,7 +89,7 @@ jobs:
 
       - name: Install Conda environment from environment.yml
         uses: pavelzw/provision-with-micromamba@deinit
-        with: 
+        with:
           post-deinit: false
 
       # - name: Run Python
