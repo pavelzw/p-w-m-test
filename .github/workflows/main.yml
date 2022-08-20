@@ -48,3 +48,55 @@ jobs:
         shell: bash -l {0}
         run: |
           python -c "import numpy"
+  test-no-deinit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Conda environment from environment.yml
+        uses: pavelzw/provision-with-micromamba@deinit
+        with: 
+          post-deinit: false
+
+      # Linux and macOS
+      - name: Run Python
+        shell: bash -l {0}
+        run: |
+          python -c "import numpy"
+  test2-no-deinit:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Conda environment from environment.yml
+        uses: pavelzw/provision-with-micromamba@deinit
+        with: 
+          post-deinit: false
+
+      # Linux and macOS
+      - name: Run Python
+        shell: powershell
+        run: |
+          python -c "import numpy"
+      - name: Run cmd.exe
+        shell: cmd /C CALL {0}
+        run: >-
+          micromamba info && micromamba list
+  test3-no-deinit:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Conda environment from environment.yml
+        uses: pavelzw/provision-with-micromamba@deinit
+        with: 
+          post-deinit: false
+
+      # - name: Run Python
+      #   shell: zsh -i {0}
+      #   run: |
+      #     python -c "import numpy"
+      - name: Run Python
+        shell: bash -l {0}
+        run: |
+          python -c "import numpy"
